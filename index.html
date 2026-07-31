@@ -1,0 +1,388 @@
+
+
+Index · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vandit - Co-founder at Floindex Ventures. Building modern infrastructure for urban futures.">
+    <meta name="theme-color" content="#0F172A">
+    <title>Vandit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        :root {
+            --navy: #0F172A;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --slate: #64748B;
+            --slate-light: #E2E8F0;
+            --slate-dark: #1E293B;
+        }
+ 
+        html {
+            scroll-behavior: smooth;
+        }
+ 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+        }
+ 
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+ 
+        a:hover {
+            opacity: 0.8;
+        }
+ 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+ 
+        /* Header & Navigation */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+        }
+ 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+ 
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+ 
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+ 
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--slate);
+            transition: color 0.2s ease;
+        }
+ 
+        nav a:hover {
+            color: var(--gold);
+        }
+ 
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 60vh;
+        }
+ 
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+ 
+        .hero h1 .accent {
+            color: var(--gold);
+        }
+ 
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--slate);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            font-weight: 500;
+        }
+ 
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin-bottom: 3rem;
+        }
+ 
+        /* Content Section */
+        .content-section {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+ 
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 2rem;
+        }
+ 
+        .bio-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--slate-light);
+            margin-bottom: 1.5rem;
+        }
+ 
+        .bio-text strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+ 
+        .experience-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+ 
+        .experience-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.05);
+            color: var(--slate-light);
+            font-size: 1rem;
+        }
+ 
+        .experience-list li:last-child {
+            border-bottom: none;
+        }
+ 
+        .role-title {
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+ 
+        /* CTA Section */
+        .cta-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+ 
+        .cta-block {
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+ 
+        .cta-block:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+ 
+        .cta-block h3 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+ 
+        .cta-block p {
+            color: var(--slate);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+ 
+        .placeholder-section {
+            padding: 2rem;
+            background: rgba(100, 116, 139, 0.1);
+            border-radius: 8px;
+            color: var(--slate);
+            font-size: 0.95rem;
+        }
+ 
+        /* Placeholder Content */
+        .coming-soon {
+            color: var(--slate);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+ 
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 6rem;
+            color: var(--slate);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+ 
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+ 
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+ 
+            nav {
+                gap: 1rem;
+            }
+ 
+            nav a {
+                font-size: 0.9rem;
+            }
+ 
+            .cta-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+ 
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+ 
+        /* Focus states for accessibility */
+        a:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+ 
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+ 
+        /* Reduced motion respect */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">vandit.me</div>
+                <nav>
+                    <a href="#about">About</a>
+                    <a href="#background">Background</a>
+                    <a href="#connect">Connect</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+ 
+    <main>
+        <section class="hero" id="about">
+            <div class="container">
+                <div class="accent-line"></div>
+                <h1>Hey, I'm <span class="accent">Vandit</span>.</h1>
+                <p class="hero-tagline">Co-founder at Floindex Ventures, building modern infrastructure for the future of urban cities.</p>
+            </div>
+        </section>
+ 
+        <section class="content-section" id="background">
+            <div class="container">
+                <h2 class="section-title">Background</h2>
+                
+                <p class="bio-text">
+                    I'm a co-founder at <strong>Floindex Ventures</strong>, a Bengaluru-based infra startup building modern products and services for the future of urban infrastructure.
+                </p>
+ 
+                <p class="bio-text">
+                    Previously, I worked at <strong>American Express (NYC)</strong>, where I owned the end-to-end digital product experience for the Consumer App (mobile and web) and supported strategic investments for Amex's consumer business. Before that, I worked across fintechs including <strong>Yodlee</strong>, <strong>Brigit</strong>, and <strong>Kapitaltech</strong>, in data and software engineering roles.
+                </p>
+ 
+                <p class="bio-text">
+                    I hold a Master's in Tech Management from <strong>NYU</strong> and have completed Infrastructure Management at <strong>ISB</strong>. During my academic years, I co-founded a multi-city student-run philanthropy initiative and co-designed a community fridge project in New York.
+                </p>
+ 
+                <p class="bio-text">
+                    I enjoy geeking out on data, product, and behavioral economics—and I train seriously for endurance races in running and cycling.
+                </p>
+ 
+                <ul class="experience-list">
+                    <li>
+                        <span class="role-title">Co-founder → Floindex Ventures</span>
+                        Modern infrastructure for urban futures
+                    </li>
+                    <li>
+                        <span class="role-title">Product Lead → American Express</span>
+                        Consumer digital experience and strategic investments
+                    </li>
+                    <li>
+                        <span class="role-title">Software & Data Engineer → Fintechs</span>
+                        Yodlee, Brigit, Kapitaltech
+                    </li>
+                </ul>
+            </div>
+        </section>
+ 
+        <section class="content-section" id="connect">
+            <div class="container">
+                <h2 class="section-title">Connect</h2>
+                
+                <div class="cta-section">
+                    <div class="cta-block">
+                        <h3>📅 Book an appointment</h3>
+                        <p>Let's chat about infrastructure, product, or whatever's on your mind.</p>
+                        <p class="coming-soon">Add your calendar link soon</p>
+                    </div>
+ 
+                    <div class="cta-block">
+                        <h3>📂 Side Projects</h3>
+                        <p>Exploring ideas at the intersection of infrastructure and technology.</p>
+                        <p class="coming-soon">Coming soon</p>
+                    </div>
+                </div>
+ 
+                <div style="margin-top: 3rem;">
+                    <h3 class="section-title">Social</h3>
+                    <div class="placeholder-section">
+                        Your social links will appear here. Add LinkedIn, Twitter, GitHub, or other profiles when ready.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+ 
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Vandit. Built with integrity and ambition.</p>
+        </div>
+    </footer>
+</body>
+</html>
+ 
