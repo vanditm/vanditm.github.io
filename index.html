@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vandit - Co-founder at Floindex Ventures. Building modern infrastructure for urban futures.">
+    <meta name="description" content="Vandit - Co-founder at Floindex Systems. Building modern infrastructure for urban futures.">
     <meta name="theme-color" content="#FFFFFF">
     <title>Vandit</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -139,6 +139,89 @@
         .bio-text strong {
             color: #000000;
             font-weight: 600;
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .private-panel {
+            padding: 1.5rem;
+            background: #f8f9fb;
+            border: 1px solid #e6e8eb;
+            border-radius: 14px;
+            max-width: 620px;
+            margin-top: 1.25rem;
+        }
+
+        .private-panel p {
+            margin-bottom: 1rem;
+        }
+
+        .private-form {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .private-form label {
+            font-size: 0.95rem;
+            color: #333333;
+            display: block;
+        }
+
+        .private-form input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #d2d5d9;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            background: #ffffff;
+        }
+
+        .private-form button {
+            width: fit-content;
+            padding: 0.85rem 1.25rem;
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .private-form button:hover {
+            opacity: 0.85;
+        }
+
+        .private-feedback {
+            color: #666666;
+            font-size: 0.92rem;
+            min-height: 1.2rem;
+        }
+
+        .private-content {
+            margin-top: 1.5rem;
+            color: #242424;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-section {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
         }
 
         /* CTA Section */
@@ -280,26 +363,26 @@
                 <nav>
                     <a href="#about">About</a>
                     <a href="#background">Background</a>
-                    <a href="#connect">Connect</a>
+                    <a href="#writing">Writing</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="about">
+        <section class="hero fade-section" id="about">
             <div class="container">
                 <h1>Hey, I'm Vandit.</h1>
-                <p class="hero-tagline">Co-founder at Floindex Ventures, building modern infrastructure for the future of urban cities.</p>
+                <p class="hero-tagline">Co-founder at Floindex Systems, building modern infrastructure for the future of urban cities.</p>
             </div>
         </section>
 
-        <section class="content-section" id="background">
+        <section class="content-section fade-section" id="background">
             <div class="container">
                 <h2 class="section-title">Background</h2>
                 
                 <p class="bio-text">
-                    I'm a co-founder at <strong>Floindex Ventures</strong>, a Bengaluru-based infra startup building modern products and services for the future of urban infrastructure.
+                    I'm a co-founder at <strong>Floindex Systems</strong>, a Bengaluru-based infra startup building modern products and services for the future of urban infrastructure.
                 </p>
 
                 <p class="bio-text">
@@ -316,17 +399,29 @@
             </div>
         </section>
 
-        <section class="content-section" id="connect">
+        <section class="content-section fade-section" id="writing">
             <div class="container">
-                <h2 class="section-title">Connect</h2>
-                
-                <div class="cta-section">
-                    <div class="cta-block">
-                        <h3>Book an appointment</h3>
-                        <p>Let's chat about infrastructure, product, or whatever's on your mind.</p>
-                        <a href="https://calendly.com/vanditm/30min" class="cta-link">Schedule time</a>
+                <h2 class="section-title">Writing</h2>
+                <p class="bio-text">Private notes and short essays are available for invited readers. Request access if you want to follow this work more closely.</p>
+                <div class="private-panel">
+                    <button id="private-reveal" class="cta-link">Request access</button>
+                    <div id="private-form" class="private-form hidden">
+                        <label for="subscriber-code">Subscriber code</label>
+                        <input type="password" id="subscriber-code" placeholder="Enter your code" autocomplete="off">
+                        <button id="private-submit" type="button">Unlock</button>
+                        <p class="private-feedback" id="private-feedback" aria-live="polite"></p>
                     </div>
+                    <div id="private-content" class="private-content hidden" aria-hidden="true">
+                        <p class="bio-text"><strong>Subscriber note</strong>: the next short essay is reserved for readers who are building with a long-term view on urban systems and product design.</p>
+                        <p class="bio-text">If you already have a code, unlock the content above. If not, this is where selected writing will appear.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section class="content-section fade-section">
+            <div class="container">
+                <div class="cta-section">
                     <div class="cta-block">
                         <h3>Side projects</h3>
                         <p>Exploring ideas at the intersection of infrastructure and technology.</p>
@@ -335,7 +430,8 @@
                 </div>
 
                 <div class="social-links">
-                    <a href="https://x.com/vanditm" title="Twitter" aria-label="Twitter">𝕏</a>
+                    <a href="https://calendly.com/vanditm/30min" title="Connect with me" aria-label="Connect with me">C</a>
+                    <a href="https://x.com/vanditm" title="X" aria-label="X">𝕏</a>
                     <a href="https://www.linkedin.com/in/vanditm/" title="LinkedIn" aria-label="LinkedIn">in</a>
                     <a href="https://www.strava.com/athletes/5940960" title="Strava" aria-label="Strava">⚡</a>
                 </div>
@@ -348,5 +444,70 @@
             <p>&copy; 2026 Vandit</p>
         </div>
     </footer>
+
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const revealSections = document.querySelectorAll('.fade-section');
+
+        function revealOnScroll() {
+            const windowBottom = window.innerHeight * 0.9;
+            revealSections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= windowBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        if (!prefersReducedMotion) {
+            revealOnScroll();
+            window.addEventListener('scroll', revealOnScroll);
+            window.addEventListener('resize', revealOnScroll);
+        } else {
+            revealSections.forEach(section => section.classList.add('visible'));
+        }
+
+        const revealButton = document.getElementById('private-reveal');
+        const privateForm = document.getElementById('private-form');
+        const privateSubmit = document.getElementById('private-submit');
+        const privateFeedback = document.getElementById('private-feedback');
+        const privateContent = document.getElementById('private-content');
+
+        const subscriberHash = '5b7f5b3ec26fe311d8ef21c6a22ae2ed31e2f2679745ca6dc532ea4d07ba7f5a';
+
+        async function hashCode(value) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(value);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        revealButton.addEventListener('click', () => {
+            privateForm.classList.toggle('hidden');
+            if (!privateForm.classList.contains('hidden')) {
+                document.getElementById('subscriber-code').focus();
+            }
+        });
+
+        privateSubmit.addEventListener('click', async () => {
+            const value = document.getElementById('subscriber-code').value.trim();
+            if (!value) {
+                privateFeedback.textContent = 'Enter your subscriber code to continue.';
+                return;
+            }
+
+            const valueHash = await hashCode(value);
+            if (valueHash === subscriberHash) {
+                privateFeedback.textContent = '';
+                privateForm.classList.add('hidden');
+                privateContent.classList.remove('hidden');
+                privateContent.setAttribute('aria-hidden', 'false');
+                revealButton.textContent = 'Content unlocked';
+            } else {
+                privateFeedback.textContent = 'That code is not recognized. Please try again.';
+            }
+        });
+    </script>
 </body>
 </html>
