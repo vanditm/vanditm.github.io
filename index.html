@@ -113,22 +113,6 @@
             color: var(--text);
         }
 
-        .theme-toggle {
-            margin-left: 1rem;
-            padding: 0.55rem 0.95rem;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            background: transparent;
-            color: var(--text);
-            font: inherit;
-            cursor: pointer;
-            transition: background 0.2s ease, border-color 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(0, 0, 0, 0.03);
-        }
-
         /* Hero Section */
         .hero {
             padding: 3rem 0;
@@ -289,6 +273,11 @@
             border-radius: 14px;
             box-shadow: 0 20px 45px var(--shadow);
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 160px;
         }
 
         .cta-block:hover {
@@ -313,15 +302,25 @@
         }
 
         .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--text);
             font-weight: 600;
             font-size: 0.95rem;
-            border-bottom: 1px solid var(--text);
-            display: inline-block;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
         }
 
         .cta-link:hover {
-            opacity: 0.8;
+            border-color: var(--text);
+            background: rgba(0,0,0,0.04);
+            opacity: 0.98;
         }
 
         /* Social Links */
@@ -405,29 +404,6 @@
             border-radius: 2px;
         }
 
-        body.dark {
-            --bg: #090909;
-            --surface: #111111;
-            --text: #f4f4f4;
-            --muted: #b0b0b0;
-            --border: #282828;
-            --panel: #141414;
-            --link: #f4f4f4;
-            --link-hover: #ffffff;
-            --accent: #f4f4f4;
-            --shadow: rgba(0, 0, 0, 0.35);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                color-scheme: dark;
-            }
-
-            body:not(.light) {
-                background-color: var(--bg);
-            }
-        }
-
         /* Reduced motion respect */
         @media (prefers-reduced-motion: reduce) {
             .fade-section {
@@ -447,7 +423,6 @@
                     <a href="#about">About</a>
                     <a href="#background">Background</a>
                     <a href="#writing">Writing</a>
-                    <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
                 </nav>
             </div>
         </div>
@@ -551,7 +526,6 @@
         const privateSubmit = document.getElementById('private-submit');
         const privateFeedback = document.getElementById('private-feedback');
         const privateContent = document.getElementById('private-content');
-        const themeToggle = document.getElementById('theme-toggle');
 
         const subscriberHash = '5b7f5b3ec26fe311d8ef21c6a22ae2ed31e2f2679745ca6dc532ea4d07ba7f5a';
 
@@ -563,33 +537,7 @@
             return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
 
-        function setTheme(value) {
-            if (value === 'dark') {
-                document.body.classList.add('dark');
-                themeToggle.textContent = 'Light mode';
-            } else {
-                document.body.classList.remove('dark');
-                themeToggle.textContent = 'Dark mode';
-            }
-            localStorage.setItem('preferred-theme', value);
-        }
-
-        function initializeTheme() {
-            const stored = localStorage.getItem('preferred-theme');
-            if (stored) {
-                setTheme(stored);
-                return;
-            }
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setTheme(prefersDark ? 'dark' : 'light');
-        }
-
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.body.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
-        });
-
-        initializeTheme();
+        // Dark mode removed: theme controls cleared
 
         revealButton.addEventListener('click', () => {
             privateForm.classList.toggle('hidden');
