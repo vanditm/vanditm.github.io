@@ -201,16 +201,16 @@
             transform: translateY(0);
         }
 
-        .private-panel {
+        .card {
             padding: 1.5rem;
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 14px;
-            max-width: 620px;
-            margin-top: 1.25rem;
+            box-shadow: 0 20px 45px var(--shadow);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .private-panel p {
+        .card p {
             margin-bottom: 1rem;
         }
 
@@ -222,24 +222,25 @@
 
         .private-form label {
             font-size: 0.95rem;
-            color: #333333;
+            color: var(--muted);
             display: block;
         }
 
         .private-form input {
             width: 100%;
             padding: 0.85rem 1rem;
-            border: 1px solid #d2d5d9;
+            border: 1px solid var(--border);
             border-radius: 10px;
             font-size: 0.95rem;
-            background: #ffffff;
+            background: var(--bg);
+            color: var(--text);
         }
 
         .private-form button {
             width: fit-content;
             padding: 0.85rem 1.25rem;
-            background: #000000;
-            color: #ffffff;
+            background: var(--text);
+            color: var(--bg);
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -258,7 +259,7 @@
 
         .private-content {
             margin-top: 1.5rem;
-            color: #242424;
+            color: var(--muted);
         }
 
         .hidden {
@@ -273,51 +274,54 @@
             }
         }
 
-        /* CTA Section */
-        .cta-section {
+        /* Card grid */
+        .card-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
         .cta-block {
             padding: 1.5rem;
-            background: #FFFFFF;
-            border: 1px solid #DDDDDD;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 20px 45px var(--shadow);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .cta-block:hover {
-            border-color: #999999;
+            border-color: var(--text);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.16);
         }
 
         .cta-block h3 {
-            color: #000000;
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
             font-weight: 600;
             margin-top: 0;
+            text-transform: none;
         }
 
         .cta-block p {
-            color: #666666;
+            color: var(--muted);
             font-size: 0.95rem;
             margin-bottom: 1rem;
             margin-top: 0;
         }
 
         .cta-link {
-            color: #000000;
+            color: var(--text);
             font-weight: 600;
             font-size: 0.95rem;
-            border-bottom: 1px solid #000000;
+            border-bottom: 1px solid var(--text);
             display: inline-block;
         }
 
         .cta-link:hover {
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         /* Social Links */
@@ -326,6 +330,8 @@
             flex-wrap: wrap;
             gap: 0.75rem;
             align-items: center;
+            justify-content: center;
+            width: 100%;
             margin-top: 3rem;
         }
 
@@ -479,29 +485,24 @@
 
         <section class="content-section fade-section" id="writing">
             <div class="container">
-                <h2 class="section-title">Writing</h2>
-                <p class="bio-text">Private notes and short essays are available for invited readers. Request access if you want to follow this work more closely.</p>
-                <div class="private-panel">
-                    <button id="private-reveal" class="cta-link">Request access</button>
-                    <div id="private-form" class="private-form hidden">
-                        <label for="subscriber-code">Subscriber code</label>
-                        <input type="password" id="subscriber-code" placeholder="Enter your code" autocomplete="off">
-                        <button id="private-submit" type="button">Unlock</button>
-                        <p class="private-feedback" id="private-feedback" aria-live="polite"></p>
-                    </div>
-                    <div id="private-content" class="private-content hidden" aria-hidden="true">
-                        <p class="bio-text"><strong>Subscriber note</strong>: the next short essay is reserved for readers who are building with a long-term view on urban systems and product design.</p>
-                        <p class="bio-text">If you already have a code, unlock the content above. If not, this is where selected writing will appear.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section fade-section">
-            <div class="container">
-                <div class="cta-section">
+                <div class="card-grid">
                     <div class="cta-block">
-                        <h3>Side projects</h3>
+                        <h3>Writing</h3>
+                        <p>Subscriber-only notes and private essays are available for invited readers. Request access if you want to follow this work more closely.</p>
+                        <button id="private-reveal" class="cta-link">Request access</button>
+                        <div id="private-form" class="private-form hidden">
+                            <label for="subscriber-code">Subscriber code</label>
+                            <input type="password" id="subscriber-code" placeholder="Enter your code" autocomplete="off">
+                            <button id="private-submit" type="button">Unlock</button>
+                            <p class="private-feedback" id="private-feedback" aria-live="polite"></p>
+                        </div>
+                        <div id="private-content" class="private-content hidden" aria-hidden="true">
+                            <p class="bio-text"><strong>Subscriber note</strong>: the next short essay is reserved for readers who are building with a long-term view on urban systems and product design.</p>
+                            <p class="bio-text">If you already have a code, unlock the content above. If not, this is where selected writing will appear.</p>
+                        </div>
+                    </div>
+                    <div class="cta-block">
+                        <h3>Side Projects</h3>
                         <p>Exploring ideas at the intersection of infrastructure and technology.</p>
                         <a href="https://vanditm.notion.site/Side-Projects-7c05895ab2364857995ae7f5131b8c5b?source=copy_link" class="cta-link">View projects</a>
                     </div>
