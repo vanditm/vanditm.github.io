@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Vandit - Co-founder at Floindex Systems. Building modern infrastructure for urban futures.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vandit — Co-founder at Floindex Systems">
+    <meta property="og:description" content="Co-founder at Floindex Systems. Building modern infrastructure for urban futures.">
+    <meta property="og:url" content="https://vandit.me">
+    <meta property="og:site_name" content="vandit.me">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vandit — Co-founder at Floindex Systems">
+    <meta name="twitter:description" content="Co-founder at Floindex Systems. Building modern infrastructure for urban futures.">
+    <meta name="twitter:site" content="@vanditm">
     <meta name="theme-color" content="#FFFFFF">
     <title>Vandit</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,16 +35,30 @@
             scroll-behavior: smooth;
         }
 
+        :root {
+            color-scheme: light dark;
+            --bg: #ffffff;
+            --surface: #ffffff;
+            --text: #000000;
+            --muted: #555555;
+            --border: #eeeeee;
+            --panel: #f8f9fb;
+            --link: #000000;
+            --link-hover: #111111;
+            --accent: #000000;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #FFFFFF;
-            color: #000000;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             letter-spacing: -0.01em;
         }
 
         a {
-            color: #000000;
+            color: var(--link);
             text-decoration: none;
             transition: opacity 0.2s ease;
         }
@@ -82,12 +105,28 @@
         nav a {
             font-size: 0.95rem;
             font-weight: 400;
-            color: #666666;
+            color: var(--muted);
             transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: #000000;
+            color: var(--text);
+        }
+
+        .theme-toggle {
+            margin-left: 1rem;
+            padding: 0.55rem 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.03);
         }
 
         /* Hero Section */
@@ -123,10 +162,20 @@
         .section-title {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #000000;
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 42px;
+            height: 2px;
+            margin-top: 0.85rem;
+            background: var(--accent);
+            opacity: 0.2;
         }
 
         .bio-text {
@@ -154,8 +203,8 @@
 
         .private-panel {
             padding: 1.5rem;
-            background: #f8f9fb;
-            border: 1px solid #e6e8eb;
+            background: var(--panel);
+            border: 1px solid var(--border);
             border-radius: 14px;
             max-width: 620px;
             margin-top: 1.25rem;
@@ -274,26 +323,30 @@
         /* Social Links */
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
             align-items: center;
             margin-top: 3rem;
         }
 
         .social-links a {
-            width: 32px;
-            height: 32px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #DDDDDD;
-            border-radius: 6px;
-            font-size: 1rem;
+            min-height: 36px;
+            padding: 0 1rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: all 0.2s ease;
         }
 
         .social-links a:hover {
-            border-color: #000000;
-            background: #FAFAFA;
+            border-color: var(--text);
+            background: rgba(0, 0, 0, 0.04);
         }
 
         /* Footer */
@@ -317,10 +370,11 @@
             }
 
             nav {
-                gap: 1rem;
+                gap: 0.75rem;
             }
 
-            nav a {
+            nav a,
+            .theme-toggle {
                 font-size: 0.9rem;
             }
 
@@ -330,11 +384,11 @@
             }
 
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1.25rem;
             }
 
             .social-links {
-                gap: 1rem;
+                gap: 0.75rem;
             }
         }
 
@@ -345,12 +399,35 @@
             border-radius: 2px;
         }
 
+        body.dark {
+            --bg: #090909;
+            --surface: #111111;
+            --text: #f4f4f4;
+            --muted: #b0b0b0;
+            --border: #282828;
+            --panel: #141414;
+            --link: #f4f4f4;
+            --link-hover: #ffffff;
+            --accent: #f4f4f4;
+            --shadow: rgba(0, 0, 0, 0.35);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color-scheme: dark;
+            }
+
+            body:not(.light) {
+                background-color: var(--bg);
+            }
+        }
+
         /* Reduced motion respect */
         @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .fade-section {
+                opacity: 1;
+                transform: none;
+                transition: none;
             }
         }
     </style>
@@ -364,6 +441,7 @@
                     <a href="#about">About</a>
                     <a href="#background">Background</a>
                     <a href="#writing">Writing</a>
+                    <button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button>
                 </nav>
             </div>
         </div>
@@ -430,10 +508,10 @@
                 </div>
 
                 <div class="social-links">
-                    <a href="https://calendly.com/vanditm/30min" title="Connect with me" aria-label="Connect with me">C</a>
-                    <a href="https://x.com/vanditm" title="X" aria-label="X">𝕏</a>
-                    <a href="https://www.linkedin.com/in/vanditm/" title="LinkedIn" aria-label="LinkedIn">in</a>
-                    <a href="https://www.strava.com/athletes/5940960" title="Strava" aria-label="Strava">⚡</a>
+                    <a href="https://calendly.com/vanditm/30min" title="Connect with me" aria-label="Connect with me">Meet</a>
+                    <a href="https://x.com/vanditm" title="X" aria-label="X">X</a>
+                    <a href="https://www.linkedin.com/in/vanditm/" title="LinkedIn" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="https://www.strava.com/athletes/5940960" title="Strava" aria-label="Strava">Strava</a>
                 </div>
             </div>
         </section>
@@ -472,6 +550,7 @@
         const privateSubmit = document.getElementById('private-submit');
         const privateFeedback = document.getElementById('private-feedback');
         const privateContent = document.getElementById('private-content');
+        const themeToggle = document.getElementById('theme-toggle');
 
         const subscriberHash = '5b7f5b3ec26fe311d8ef21c6a22ae2ed31e2f2679745ca6dc532ea4d07ba7f5a';
 
@@ -482,6 +561,34 @@
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         }
+
+        function setTheme(value) {
+            if (value === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.textContent = 'Light mode';
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.textContent = 'Dark mode';
+            }
+            localStorage.setItem('preferred-theme', value);
+        }
+
+        function initializeTheme() {
+            const stored = localStorage.getItem('preferred-theme');
+            if (stored) {
+                setTheme(stored);
+                return;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(prefersDark ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+
+        initializeTheme();
 
         revealButton.addEventListener('click', () => {
             privateForm.classList.toggle('hidden');
